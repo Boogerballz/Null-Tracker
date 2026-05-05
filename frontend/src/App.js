@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 
 import './App.css';
 
-const API = 'http://127.0.0.1:8000';
+const API = '';
 const SPRITE_GEN5 = 'https://play.pokemonshowdown.com/sprites/gen5/';
 const SPRITE_ANI  = 'https://play.pokemonshowdown.com/sprites/ani/';
 const TYPE_NULL_SPRITE = 'https://play.pokemonshowdown.com/sprites/gen5/typenull.png';
