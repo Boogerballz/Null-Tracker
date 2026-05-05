@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 
 import './App.css';
 
-const API = 'https://null-tracker-backend.onrender.com';
+const API = 'https://your-render-url.onrender.com';
 const SPRITE_GEN5 = 'https://play.pokemonshowdown.com/sprites/gen5/';
 const SPRITE_ANI  = 'https://play.pokemonshowdown.com/sprites/ani/';
 const TYPE_NULL_SPRITE = 'https://play.pokemonshowdown.com/sprites/gen5/typenull.png';

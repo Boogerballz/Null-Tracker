@@ -17,6 +17,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+origins = [
+    "http://localhost:3000",
+    "https://null-tracker-12-jcp87zpmw-boogerballzs-projects.vercel.app",
+    "https://*.vercel.app",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Register all routes
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(encounters.router, prefix="/encounters", tags=["encounters"])
