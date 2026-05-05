@@ -8,25 +8,11 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Pokémon Null Encounter Router")
 
-# Allow React frontend to talk to this backend
+# Allow all origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-origins = [
-    "http://localhost:3000",
-    "https://null-tracker-12-jcp87zpmw-boogerballzs-projects.vercel.app",
-    "https://*.vercel.app",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
