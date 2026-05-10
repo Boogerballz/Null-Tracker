@@ -789,6 +789,27 @@ const OTHER_LOCATIONS = {
 const SAFARI_LOCATIONS = ["Safari Zone South","Safari Zone North","Safari Zone Southwest","Safari Zone Northwest","Safari Zone Southeast","Safari Zone Northeast"];
 const NAVEL_LOCATIONS  = ["Navel Rock Entrance","Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4","Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5"];
 
+const NOTE_LABELS = {
+  "Safari Zone South":     { grass: "Test" },
+  "Safari Zone North":     { grass: "Test", rock_smash: "Test" },
+  "Safari Zone Southwest": { grass: "Test", fishing: "Test", surfing: "Test" },
+  "Safari Zone Northwest": { grass: "Test", fishing: "Test", surfing: "Test" },
+  "Safari Zone Southeast": { grass: "Test", fishing: "Test", surfing: "Test", rock_smash: "Test" },
+  "Safari Zone Northeast": { grass: "Test" },
+  "Navel Rock Entrance":   { grass: "Test" },
+  "Navel Rock B1F":        { grass: "Test" },
+  "Navel Rock Fork":       { grass: "Test" },
+  "Navel Rock Up 1":       { grass: "Test" },
+  "Navel Rock Up 2":       { grass: "Test" },
+  "Navel Rock Up 3":       { grass: "Test" },
+  "Navel Rock Up 4":       { grass: "Test" },
+  "Navel Rock Down 1":     { grass: "Test" },
+  "Navel Rock Down 2":     { grass: "Test" },
+  "Navel Rock Down 3":     { grass: "Test" },
+  "Navel Rock Down 4":     { grass: "Test" },
+  "Navel Rock Down 5":     { grass: "Test" },
+};
+
 function OtherLocationCard({ name, encounters, box, onCatch }) {
   const [expanded, setExpanded] = useState(false);
   const methods = Object.entries(encounters);
@@ -844,7 +865,7 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
         </button>
       )}
     </div>
-    
+
   );
 }
  
