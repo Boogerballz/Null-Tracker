@@ -800,7 +800,7 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
         <div className="route-header-right">
           {methods.length > 1 && !expanded && (
             <span className="method-pills">
-              {methods.slice(1).map(([m]) => <span key={m} className="pill"><MethodIcon method={m} small /></span>)}
+              {methods.slice(1).map(([m]) => <span key={m} className="pill"><MethodIcon method={m} small routeName={name} /></span>)}
             </span>
           )}
           <span className="expand-icon">{expanded ? '▲' : '▼'}</span>
@@ -808,13 +808,27 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
       </div>
       {visible.map(([method, encs]) => {
         const adjusted = getAdjustedEncounters(encs, box);
-        const { color: mColor, icon: mIcon, label: mLabel } = getMethodDisplay(method, LAND_ROUTES[name] || {});
+        const { color: mColor, icon: mIcon, label: mLabel } = getMethodDisplay(method, name);
         return (
           <div key={method} className="encounter-method">
             <div className="method-header-row">
-              <div className="method-header" style={{ background: METHOD_COLORS[method] || '#444' }}>
-                <MethodIcon method={method} /> <span>{method.replace('_', ' ').toUpperCase()}</span>
+              <div className="method-header" style={{ background: mColor }}>
+                <span>{mIcon}</span> <span>{mLabel}</span>
               </div>
+              {NOTE_LABELS[name]?.[method] && (
+                <div style={{
+                  background: 'rgba(233,69,96,0.15)',
+                  border: '1px solid var(--red)',
+                  borderRadius: 4,
+                  padding: '3px 10px',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  color: 'var(--red)',
+                  whiteSpace: 'nowrap',
+                }}>
+                  {NOTE_LABELS[name][method]}
+                </div>
+              )}
             </div>
             <div className="sprite-grid">
               {adjusted.map((enc, i) => (
@@ -833,7 +847,7 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
     
   );
 }
-
+ 
 function OtherSection({ box, onCatch }) {
   const [tab, setTab] = useState('safari');
   const locations = tab === 'safari' ? SAFARI_LOCATIONS : NAVEL_LOCATIONS;
@@ -856,6 +870,7 @@ function OtherSection({ box, onCatch }) {
     </div>
   );
 }
+ 
 
 function SpecialSection() {
   return (
