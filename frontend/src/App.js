@@ -686,15 +686,15 @@ function NuzlockeTracker({ box, setBox }) {
 
   return (
     <div className="tracker">
-      <div className="tracker-header"><h2>📦 Nuzlocke Box</h2></div>
+      <div className="tracker-header"><h2>Nuzlocke Box</h2></div>
       <div className="tracker-add">
         <input className="tracker-input" placeholder="Pokémon name..." value={newName}
           onChange={e=>setNewName(e.target.value)} onKeyDown={e=>e.key==='Enter'&&addPokemon()}/>
         <button className="tracker-btn add-btn" onClick={()=>addPokemon()}>+ Add</button>
       </div>
       <div className="import-row">
-        <button className="tracker-btn import-btn" onClick={()=>setShowImport(!showImport)}>📋 Paste</button>
-        <button className="tracker-btn import-btn" onClick={()=>fileRef.current.click()}>📁 File</button>
+        <button className="tracker-btn import-btn" onClick={()=>setShowImport(!showImport)}>Paste</button>
+        <button className="tracker-btn import-btn" onClick={()=>fileRef.current.click()}>File</button>
         <input ref={fileRef} type="file" accept=".txt" style={{display:'none'}} onChange={handleFile}/>
         {box.length>0 && <button className="tracker-btn clear-btn" onClick={clearBox}>🚛 Clear</button>}
       </div>
@@ -1003,7 +1003,7 @@ function App() {
             Pokémon Null
             <img src={TYPE_NULL_SPRITE} alt="Type: Null" className="header-type-null"/>
           </h1>
-          <span className="header-sub">Encounter Router · 116 Routes</span>
+          <span className="header-sub">Encounter Router</span>
         </div>
         <div style={{display:'flex',alignItems:'center',gap:16}}>
           <a href="https://www.twitch.tv/xyzal_0" target="_blank" rel="noreferrer"
