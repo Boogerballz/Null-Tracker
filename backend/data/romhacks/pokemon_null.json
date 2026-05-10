@@ -600,6 +600,11 @@
         ],
         "rock_smash": [
           {
+            "pokemon": "Dwebble",
+            "level": 5,
+            "rate": 25
+          },
+          {
             "pokemon": "Cranidos",
             "level": 5,
             "rate": 25
@@ -2152,6 +2157,11 @@
         ],
         "rock_smash": [
           {
+            "pokemon": "Crabrawler",
+            "level": 15,
+            "rate": 25
+          },
+          {
             "pokemon": "Nosepass",
             "level": 15,
             "rate": 25
@@ -3171,6 +3181,11 @@
             "rate": 25
           },
           {
+            "pokemon": "Lycanroc-Dusk",
+            "level": 35,
+            "rate": 25
+          },
+          {
             "pokemon": "Coalossal",
             "level": 35,
             "rate": 25
@@ -3655,6 +3670,11 @@
         ],
         "rock_smash": [
           {
+            "pokemon": "Drednaw",
+            "level": 40,
+            "rate": 25
+          },
+          {
             "pokemon": "Cranidos",
             "level": 40,
             "rate": 25
@@ -3877,6 +3897,11 @@
           }
         ],
         "rock_smash": [
+          {
+            "pokemon": "Drapion",
+            "level": 43,
+            "rate": 25
+          },
           {
             "pokemon": "Whirlipede",
             "level": 43,
@@ -4101,6 +4126,11 @@
         ],
         "rock_smash": [
           {
+            "pokemon": "Tyrantrum",
+            "level": 40,
+            "rate": 25
+          },
+          {
             "pokemon": "Aurorus",
             "level": 40,
             "rate": 25
@@ -4253,6 +4283,11 @@
           }
         ],
         "rock_smash": [
+          {
+            "pokemon": "Whirlipede",
+            "level": 40,
+            "rate": 25
+          },
           {
             "pokemon": "Pineco",
             "level": 40,
@@ -4473,6 +4508,11 @@
           }
         ],
         "rock_smash": [
+          {
+            "pokemon": "Solrock",
+            "level": 55,
+            "rate": 25
+          },
           {
             "pokemon": "Lunatone",
             "level": 55,
