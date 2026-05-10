@@ -441,6 +441,7 @@ const LAND_ROUTES = new Set([
   "Victory Road 1F","Victory Road B1F","Victory Road Final Room","Navel Rock Entrance",
   "Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4",
   "Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5",
+  "Navel Rock Entrance","Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4","Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5",
 ]);
 
 const getMethodDisplay = (method, routeName) => {
@@ -807,6 +808,7 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
       </div>
       {visible.map(([method, encs]) => {
         const adjusted = getAdjustedEncounters(encs, box);
+        const { color: mColor, icon: mIcon, label: mLabel } = getMethodDisplay(method, LAND_ROUTES[name] || {});
         return (
           <div key={method} className="encounter-method">
             <div className="method-header-row">
@@ -828,6 +830,7 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
         </button>
       )}
     </div>
+    
   );
 }
 
@@ -953,7 +956,7 @@ function App() {
 
   const allNavItems=[
     ...GYM_SECTIONS.map(g=>({key:g.gym,label:g.gym,badge:g.badge,emoji:g.emoji})),
-    {key:'Other',label:'Other',badge:'Gifts & Trades',emoji:'🎁',tooltip:'Contains Safari Zone & Navel Rock encounters'},
+    {key:'Other',label:'Other',badge:'Safari Zone + Navel Rock',emoji:'🎁',tooltip:'Contains Safari Zone & Navel Rock encounters'},
     {key:'Special',label:'Special',badge:'Special Enc.',emoji:'✨'},
   ];
 
