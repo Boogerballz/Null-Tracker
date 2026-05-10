@@ -790,7 +790,6 @@ const SAFARI_LOCATIONS = ["Safari Zone South","Safari Zone North","Safari Zone S
 const NAVEL_LOCATIONS  = ["Navel Rock Entrance","Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4","Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5"];
 
 const NOTE_LABELS = {
-  "Safari Zone South":     { grass: "Test" },
   "Safari Zone North":     { grass: "Opens up after defeating Maxie in Magma Hideout.", rock_smash: "Opens up after defeating Maxie in Magma Hideout." },
   "Safari Zone Southwest": { grass: "Opens up after getting the Mind Badge.", fishing: "Opens up after getting the Mind Badge.", surfing: "Opens up after getting the Mind Badge." },
   "Safari Zone Northwest": { grass: "Opens up after defeating Archie in Seafloor Cavern.", fishing: "Opens up after defeating Archie in Seafloor Cavern.", surfing: "Opens up after defeating Archie in Seafloor Cavern." },
