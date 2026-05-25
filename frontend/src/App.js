@@ -420,7 +420,7 @@ const GYM_SECTIONS = [
   { gym:"Flannery", badge:"Heat Badge", emoji:"🔥", routes:["Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F","Route 113","Fallarbor Town","Route 114","Route 114 Underpass","Meteor Falls","Meteor Falls Room 2","Meteor Falls B1F Room 1","Meteor Falls B1F Room 2","Route 112","Fiery Path","Mt. Chimney","Jagged Pass"] },
   { gym:"Winona", badge:"Feather Badge", emoji:"🪶", routes:["Route 134","New Mauville (Outside)","New Mauville (Inside)","Route 105","Route 108","Abandoned Ship B1F Rooms","Abandoned Ship Dive Room","Route 119","Fortree City","Route 120"] },
   { gym:"Tate & Liza", badge:"Mind Badge", emoji:"🔮", routes:["Route 121","Lilycove City","Aqua Hideout","Battle Frontier","Artisan Cave B1F","Artisan Cave 1F","Southern Island Exterior","Southern Island Interior","Route 122","Route 123","Mt. Pyre 1F","Mt. Pyre 2F","Mt. Pyre 3F","Mt. Pyre 4F","Mt. Pyre 5F","Mt. Pyre 6F","Mt. Pyre Exterior","Mt. Pyre Summit","Magma Hideout Floor 1","Magma Hideout Floor 2","Magma Hideout Floor 3","Magma Hideout Floor 4","Mossdeep City","Route 125","Shoal Cave (Entrance Room)","Shoal Cave (Inner Room)","Shoal Cave (Stairs Room)","Shoal Cave (Lower Room)","Shoal Cave (Ice Room)"] },
-  { gym:"Steven", badge:"Rain Badge", emoji:"🌊", routes:["Route 127","Route 126","Route 126 Underwater","Sootopolis City","Route 128","Seafloor Cavern (No Water)","Seafloor Cavern (Water)","Cave Of Origin Entrance","Cave Of Origin 1F","Route 131","Pacifidlog Town","Sky Pillar 1F","Sky Pillar 2F","Sky Pillar 3F","Sky Pillar 4F","Sky Pillar 5F"] },
+  { gym:"Steven", badge:"Adamantine Badge", emoji:"⚙️", routes:["Route 127","Route 126","Route 126 Underwater","Sootopolis City","Route 128","Seafloor Cavern (No Water)","Seafloor Cavern (Water)","Cave Of Origin Entrance","Cave Of Origin 1F","Route 131","Pacifidlog Town","Sky Pillar 1F","Sky Pillar 2F","Sky Pillar 3F","Sky Pillar 4F","Sky Pillar 5F"] },
   { gym:"E4", badge:"Elite Four", emoji:"👑", routes:["Ever Grande City","Victory Road 1F","Victory Road B1F","Victory Road Final Room"] },
 ];
 
@@ -430,7 +430,7 @@ const LAND_ROUTES = new Set([
   "Verdanturf Tunnel","Verdanturf Tunnel B1F","Rusturf Tunnel",
   "Granite Cave 1F","Granite Cave B1F","Granite Cave B2F","Granite Cave Steven's Room",
   "Icicle Cave","Land Cave Entrance","Land Cave End","Altering Cave","Verdanturf Grotto",
-  "Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F",
+  "Route 111", "Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F",
   "Route 114 Underpass","Meteor Falls","Meteor Falls Room 2",
   "Meteor Falls B1F Room 1","Meteor Falls B1F Room 2",
   "Fiery Path","New Mauville (Outside)","New Mauville (Inside)",
@@ -500,10 +500,10 @@ function SpritePopup({ enc, adjRate, onCatch, onClose }) {
         </div>
         <div className="popup-actions">
           <button className="popup-btn catch-btn" onClick={()=>{onCatch(enc.pokemon);onClose();}}>
-            🎯 Catch & Add to Box
+            Catch & Add to Box
           </button>
           <a className="popup-btn dex-btn" href={getNulldexUrl(enc.pokemon)} target="_blank" rel="noreferrer">
-            📖 View in Nulldex
+            View in Nulldex
           </a>
         </div>
       </div>
@@ -755,7 +755,7 @@ const NAVEL_LAND = {
   "Navel Rock B1F":      [{r:"10%",p:"Salazzle"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Ambipom"},{r:"10%",p:"Hawlucha"},{r:"10%",p:"Primarina"},{r:"10%",p:"Swalot"},{r:"10%",p:"Samurott"},{r:"10%",p:"Samurott-Hisui"},{r:"10%",p:"Grafaiai"},{r:"5%",p:"Grafaiai"},{r:"4%",p:"Whimsicott"},{r:"1%",p:"Liepard"}],
   "Navel Rock Fork":     [{r:"10%",p:"Wyrdeer"},{r:"10%",p:"Exeggutor-Alola"},{r:"10%",p:"Carbink"},{r:"10%",p:"Cofagrigus"},{r:"10%",p:"Klefki"},{r:"10%",p:"Reuniclus"},{r:"10%",p:"Hatterene"},{r:"10%",p:"Orbeetle"},{r:"10%",p:"Spiritomb"},{r:"5%",p:"Spiritomb"},{r:"4%",p:"Spiritomb"},{r:"1%",p:"Spiritomb"}],
   "Navel Rock Up 1":     [{r:"10%",p:"Excadrill"},{r:"10%",p:"Toedscruel"},{r:"10%",p:"Avalugg"},{r:"10%",p:"Avalugg-Hisui"},{r:"10%",p:"Torkoal"},{r:"10%",p:"Coalossal"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Gliscor"},{r:"10%",p:"Corviknight"},{r:"5%",p:"Altaria"},{r:"4%",p:"Altaria"},{r:"1%",p:"Altaria"}],
-  "Navel Rock Up 2":     [{r:"10%",p:"Golem"},{r:"10%",p:"Golem-Alola"},{r:"10%",p:"Magnezone"},{r:"10%",p:"Steelix"},{r:"10%",p:"Forretress"},{r:"10%",p:"Donphan"},{r:"10%",p:"Bastiodon"},{r:"10%",p:"Probopass"},{r:"10%",p:"Crustle"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
+  "Navel Rock Up 2":     [{r:"10%",p:"Golem"},{r:"10%",p:"Golem-Alola"},{r:"10%",p:"Magnezone"},{r:"10%",p:"Steelix"},{r:"10%",p:"Forretress"},{r:"10%",p:"Donphan"},{r:"10%",p:"Bastiodon"},{r:"10%",p:"Duraludon"},{r:"10%",p:"Crustle"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
   "Navel Rock Up 3":     [{r:"10%",p:"Lycanroc-Midnight"},{r:"10%",p:"Bibarel"},{r:"10%",p:"Bombirdier"},{r:"10%",p:"Carbink"},{r:"10%",p:"Shuckle"},{r:"10%",p:"Minior"},{r:"10%",p:"Druddigon"},{r:"10%",p:"Armaldo"},{r:"10%",p:"Copperajah"},{r:"5%",p:"Meowstic"},{r:"4%",p:"Meowstic-F"},{r:"1%",p:"Meowstic-F"}],
   "Navel Rock Up 4":     [{r:"10%",p:"Cradily"},{r:"10%",p:"Porygon2"},{r:"10%",p:"Alcremie"},{r:"10%",p:"Gliscor"},{r:"10%",p:"Hydrapple"},{r:"10%",p:"Garganacl"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Altaria"},{r:"10%",p:"Sableye"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
   "Navel Rock Down 1":   [{r:"10%",p:"Audino"},{r:"10%",p:"Yanmega"},{r:"10%",p:"Klawf"},{r:"10%",p:"Espathra"},{r:"10%",p:"Klefki"},{r:"10%",p:"Stonjourner"},{r:"10%",p:"Obstagoon"},{r:"10%",p:"Hitmontop"},{r:"10%",p:"Sableye"},{r:"5%",p:"Hitmontop"},{r:"4%",p:"Hitmontop"},{r:"1%",p:"Hitmontop"}],
@@ -776,7 +776,7 @@ const OTHER_LOCATIONS = {
   "Navel Rock B1F":        { grass: [{pokemon:"Salazzle",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Ambipom",level:40,rate:10},{pokemon:"Banette",level:40,rate:10},{pokemon:"Primarina",level:40,rate:10},{pokemon:"Hawlucha",level:40,rate:10},{pokemon:"Swalot",level:40,rate:10},{pokemon:"Samurott",level:40,rate:10},{pokemon:"Samurott-Hisui",level:40,rate:10},{pokemon:"Grafaiai",level:40,rate:5},{pokemon:"Whimsicott",level:40,rate:4},{pokemon:"Liepard",level:40,rate:1}] },
   "Navel Rock Fork":       { grass: [{pokemon:"Wyrdeer",level:40,rate:10},{pokemon:"Exeggutor-Alola",level:40,rate:10},{pokemon:"Carbink",level:40,rate:10},{pokemon:"Cofagrigus",level:40,rate:10},{pokemon:"Klefki",level:40,rate:10},{pokemon:"Reuniclus",level:40,rate:10},{pokemon:"Audino",level:40,rate:10},{pokemon:"Orbeetle",level:40,rate:10},{pokemon:"Hatterene",level:40,rate:10},{pokemon:"Spiritomb",level:40,rate:5},{pokemon:"Spiritomb",level:40,rate:4},{pokemon:"Spiritomb",level:40,rate:1}] },
   "Navel Rock Up 1":       { grass: [{pokemon:"Excadrill",level:40,rate:10},{pokemon:"Toedscruel",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:10},{pokemon:"Avalugg-Hisui",level:40,rate:10},{pokemon:"Torkoal",level:40,rate:10},{pokemon:"Coalossal",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Gliscor",level:40,rate:10},{pokemon:"Corviknight",level:40,rate:10},{pokemon:"Altaria",level:40,rate:5},{pokemon:"Altaria",level:40,rate:4},{pokemon:"Altaria",level:40,rate:1}] },
-  "Navel Rock Up 2":       { grass: [{pokemon:"Golem",level:40,rate:10},{pokemon:"Golem-Alola",level:40,rate:10},{pokemon:"Magnezone",level:40,rate:10},{pokemon:"Steelix",level:40,rate:10},{pokemon:"Forretress",level:40,rate:10},{pokemon:"Donphan",level:40,rate:10},{pokemon:"Bastiodon",level:40,rate:10},{pokemon:"Probopass",level:40,rate:10},{pokemon:"Crustle",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
+  "Navel Rock Up 2":       { grass: [{pokemon:"Golem",level:40,rate:10},{pokemon:"Golem-Alola",level:40,rate:10},{pokemon:"Magnezone",level:40,rate:10},{pokemon:"Steelix",level:40,rate:10},{pokemon:"Forretress",level:40,rate:10},{pokemon:"Donphan",level:40,rate:10},{pokemon:"Bastiodon",level:40,rate:10},{pokemon:"Duraludon",level:40,rate:10},{pokemon:"Crustle",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
   "Navel Rock Up 3":       { grass: [{pokemon:"Lycanroc-Midnight",level:40,rate:10},{pokemon:"Bibarel",level:40,rate:10},{pokemon:"Bombirdier",level:40,rate:10},{pokemon:"Carbink",level:40,rate:10},{pokemon:"Shuckle",level:40,rate:10},{pokemon:"Minior",level:40,rate:10},{pokemon:"Druddigon",level:40,rate:10},{pokemon:"Armaldo",level:40,rate:10},{pokemon:"Copperajah",level:40,rate:10},{pokemon:"Meowstic",level:40,rate:5},{pokemon:"Meowstic-F",level:40,rate:4},{pokemon:"Meowstic-F",level:40,rate:1}] },
   "Navel Rock Up 4":       { grass: [{pokemon:"Cradily",level:40,rate:10},{pokemon:"Porygon2",level:40,rate:10},{pokemon:"Alcremie",level:40,rate:10},{pokemon:"Gliscor",level:40,rate:10},{pokemon:"Hydrapple",level:40,rate:10},{pokemon:"Garganacl",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Altaria",level:40,rate:10},{pokemon:"Sableye",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
   "Navel Rock Down 1":     { grass: [{pokemon:"Audino",level:40,rate:10},{pokemon:"Yanmega",level:40,rate:10},{pokemon:"Klawf",level:40,rate:10},{pokemon:"Espathra",level:40,rate:10},{pokemon:"Klefki",level:40,rate:10},{pokemon:"Dachsbun",level:40,rate:10},{pokemon:"Stonjourner",level:40,rate:10},{pokemon:"Obstagoon",level:40,rate:10},{pokemon:"Sableye",level:40,rate:10},{pokemon:"Hitmontop",level:40,rate:5},{pokemon:"Hitmontop",level:40,rate:4},{pokemon:"Hitmontop",level:40,rate:1}] },
@@ -806,7 +806,18 @@ const NOTE_LABELS = {
   "Navel Rock Down 2":     { grass: "Redirection table" },
   "Navel Rock Down 3":     { grass: "Sucker Punch table" },
   "Navel Rock Down 4":     { grass: "Fake Out table" },
-  "Navel Rock Down 5":     { grass: "Crit immunity table" },
+  "Navel Rock Down 5":     { grass: "Crit Immunity table" },
+  "Altering Grove":        { fishing: "Azumarill can use Perish Song." },
+  "Lilycove City":         { fishing: "both Primarina and Azumarill can use Perish Song." },
+  "Route 134":             { fishing: "Azumarill can use Perish Song." },
+  "Shoal Cave (Inner Room)": { surfing: "Politoed can use Perish Song." },
+  "Route 126":             { fishing: "Politoed can use Perish Song." },
+  "Route 122":             { surfing: "Mismagius can use Perish Song." },
+  "Fortree City":            { grass: "Altaria can use Perish Song." },
+  "Lilycove city":           { surfing: "Altaria can use Perish Song." },
+  "Route 131":             { surfing: "Primarina can use Perish Song." },
+  "Meteor Falls B1F Room 1":          { fishing: "Dewgong can use Perish Song." },
+  "Dewford Town":           { grass: "both Natu and Abra can use Teleport." },
 };
 
 function OtherLocationCard({ name, encounters, box, onCatch }) {
