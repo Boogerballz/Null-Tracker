@@ -77,7 +77,7 @@ const getGen5Url = (name) => {
   return `${SPRITE_GEN5}${SPRITE_OVERRIDES[key] ?? key}.png`;
 };
 const getAniUrl  = (name) => `${SPRITE_ANI}${toShowdownName(name)}.gif`;
-const getNulldexUrl = (name) => `https://ddex-chi.vercel.app/pokemon/${encodeURIComponent(toShowdownName(name))}`;
+const getNulldexUrl = (name) => `https://nulldex.pokemon0null.workers.dev/pokemon/${encodeURIComponent(toShowdownName(name))}`;
 
 const SmartSprite = memo(function SmartSprite({ name, className, style }) {
   const [src, setSrc] = useState(() => getGen5Url(name));
@@ -228,7 +228,7 @@ const EVO_CHAINS = [
   ["litten","torracat","incineroar"],["popplio","brionne","primarina"],
   ["pikipek","trumbeak","toucannon"],["yungoos","gumshoos"],
   ["grubbin","charjabug","vikavolt"],["crabrawler","crabominable"],
-  ["cutiefly","ribombee"],["rockruff","lycanroc"],["mareanie","toxapex"],
+  ["cutiefly","ribombee"],["rockruff","lycanroc", "lycanroc-dusk", "lycanroc-midnight"],["mareanie","toxapex"],
   ["mudbray","mudsdale"],["dewpider","araquanid"],["fomantis","lurantis"],
   ["morelull","shiinotic"],["salandit","salazzle"],["stufful","bewear"],
   ["bounsweet","steenee","tsareena"],["wimpod","golisopod"],
@@ -1003,7 +1003,7 @@ function App() {
   const allNavItems=[
     ...GYM_SECTIONS.map(g=>({key:g.gym,label:g.gym,badge:g.badge,emoji:g.emoji})),
     {key:'Other',label:'Other',badge:'Safari Zone + Navel Rock',emoji:'🎁',tooltip:'Contains Safari Zone & Navel Rock encounters'},
-    {key:'Special',label:'Special',badge:'Special Enc.',emoji:'✨'},
+    {key:'Special',label:'Special',badge:'Trades + Game Corner',emoji:'✨'},
   ];
 
   return (
