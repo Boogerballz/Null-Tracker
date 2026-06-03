@@ -603,7 +603,7 @@ const RouteCard = memo(function RouteCard({ route, box, onCatch }) {
               }) : (
                 <div className="sprite-grid">
                   {getAdjustedEncounters(encounters, box).map((enc,i)=>(
-                    <SpriteCard key={i} enc={enc} adjRate={enc.rate} duped={isDupedOut(enc.pokemon,box)} onCatch={onCatch}/>
+                    <SpriteCard key={i} enc={enc} adjRate={enc.adjRate} duped={isDupedOut(enc.pokemon,box)} onCatch={onCatch}/>
                   ))}
                 </div>
               )}
