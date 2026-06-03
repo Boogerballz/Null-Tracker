@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 
 import './App.css';
 
-const API = 'https://null-tracker-backend.onrender.com';
+const API = 'http://127.0.0.1:8000';
 const SPRITE_GEN5 = 'https://play.pokemonshowdown.com/sprites/gen5/';
 const SPRITE_ANI  = 'https://play.pokemonshowdown.com/sprites/ani/';
 const TYPE_NULL_SPRITE = 'https://play.pokemonshowdown.com/sprites/gen5/typenull.png';
@@ -77,7 +76,7 @@ const getGen5Url = (name) => {
   return `${SPRITE_GEN5}${SPRITE_OVERRIDES[key] ?? key}.png`;
 };
 const getAniUrl  = (name) => `${SPRITE_ANI}${toShowdownName(name)}.gif`;
-const getNulldexUrl = (name) => `https://nulldex.pokemon0null.workers.dev/pokemon/${encodeURIComponent(toShowdownName(name))}`;
+const getNulldexUrl = (name) => `https://ddex-chi.vercel.app/pokemon/${encodeURIComponent(toShowdownName(name))}`;
 
 const SmartSprite = memo(function SmartSprite({ name, className, style }) {
   const [src, setSrc] = useState(() => getGen5Url(name));
@@ -228,7 +227,7 @@ const EVO_CHAINS = [
   ["litten","torracat","incineroar"],["popplio","brionne","primarina"],
   ["pikipek","trumbeak","toucannon"],["yungoos","gumshoos"],
   ["grubbin","charjabug","vikavolt"],["crabrawler","crabominable"],
-  ["cutiefly","ribombee"],["rockruff","lycanroc", "lycanroc-dusk", "lycanroc-midnight"],["mareanie","toxapex"],
+  ["cutiefly","ribombee"],["rockruff","lycanroc"],["mareanie","toxapex"],
   ["mudbray","mudsdale"],["dewpider","araquanid"],["fomantis","lurantis"],
   ["morelull","shiinotic"],["salandit","salazzle"],["stufful","bewear"],
   ["bounsweet","steenee","tsareena"],["wimpod","golisopod"],
@@ -420,7 +419,7 @@ const GYM_SECTIONS = [
   { gym:"Flannery", badge:"Heat Badge", emoji:"🔥", routes:["Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F","Route 113","Fallarbor Town","Route 114","Route 114 Underpass","Meteor Falls","Meteor Falls Room 2","Meteor Falls B1F Room 1","Meteor Falls B1F Room 2","Route 112","Fiery Path","Mt. Chimney","Jagged Pass"] },
   { gym:"Winona", badge:"Feather Badge", emoji:"🪶", routes:["Route 134","New Mauville (Outside)","New Mauville (Inside)","Route 105","Route 108","Abandoned Ship B1F Rooms","Abandoned Ship Dive Room","Route 119","Fortree City","Route 120"] },
   { gym:"Tate & Liza", badge:"Mind Badge", emoji:"🔮", routes:["Route 121","Lilycove City","Aqua Hideout","Battle Frontier","Artisan Cave B1F","Artisan Cave 1F","Southern Island Exterior","Southern Island Interior","Route 122","Route 123","Mt. Pyre 1F","Mt. Pyre 2F","Mt. Pyre 3F","Mt. Pyre 4F","Mt. Pyre 5F","Mt. Pyre 6F","Mt. Pyre Exterior","Mt. Pyre Summit","Magma Hideout Floor 1","Magma Hideout Floor 2","Magma Hideout Floor 3","Magma Hideout Floor 4","Mossdeep City","Route 125","Shoal Cave (Entrance Room)","Shoal Cave (Inner Room)","Shoal Cave (Stairs Room)","Shoal Cave (Lower Room)","Shoal Cave (Ice Room)"] },
-  { gym:"Steven", badge:"Adamantine Badge", emoji:"⚙️", routes:["Route 127","Route 126","Route 126 Underwater","Sootopolis City","Route 128","Seafloor Cavern (No Water)","Seafloor Cavern (Water)","Cave Of Origin Entrance","Cave Of Origin 1F","Route 131","Pacifidlog Town","Sky Pillar 1F","Sky Pillar 2F","Sky Pillar 3F","Sky Pillar 4F","Sky Pillar 5F"] },
+  { gym:"Steven", badge:"Rain Badge", emoji:"🌊", routes:["Route 127","Route 126","Route 126 Underwater","Sootopolis City","Route 128","Seafloor Cavern (No Water)","Seafloor Cavern (Water)","Cave Of Origin Entrance","Cave Of Origin 1F","Route 131","Pacifidlog Town","Sky Pillar 1F","Sky Pillar 2F","Sky Pillar 3F","Sky Pillar 4F","Sky Pillar 5F"] },
   { gym:"E4", badge:"Elite Four", emoji:"👑", routes:["Ever Grande City","Victory Road 1F","Victory Road B1F","Victory Road Final Room"] },
 ];
 
@@ -430,18 +429,11 @@ const LAND_ROUTES = new Set([
   "Verdanturf Tunnel","Verdanturf Tunnel B1F","Rusturf Tunnel",
   "Granite Cave 1F","Granite Cave B1F","Granite Cave B2F","Granite Cave Steven's Room",
   "Icicle Cave","Land Cave Entrance","Land Cave End","Altering Cave","Verdanturf Grotto",
-  "Route 111", "Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F",
+  "Mirage Tower 1F","Mirage Tower 2F","Mirage Tower 3F","Mirage Tower 4F",
   "Route 114 Underpass","Meteor Falls","Meteor Falls Room 2",
   "Meteor Falls B1F Room 1","Meteor Falls B1F Room 2",
   "Fiery Path","New Mauville (Outside)","New Mauville (Inside)",
-  "Artisan Cave B1F","Artisan Cave 1F","Mt. Pyre 1F","Mt. Pyre 2F","Mt. Pyre 3F","Mt. Pyre 4F","Mt. Pyre 5F","Mt. Pyre 6F",
-  "Magma Hideout Floor 1","Magma Hideout Floor 2","Magma Hideout Floor 3","Magma Hideout Floor 4",
-  "Shoal Cave (Entrance Room)","Shoal Cave (Inner Room)","Shoal Cave (Stairs Room)","Shoal Cave (Lower Room)","Shoal Cave (Ice Room)",
-  "Seafloor Cavern (No Water)","Seafloor Cavern (Water)","Cave Of Origin Entrance","Cave Of Origin 1F","Sky Pillar 1F","Sky Pillar 2F","Sky Pillar 3F","Sky Pillar 4F","Sky Pillar 5F",
-  "Victory Road 1F","Victory Road B1F","Victory Road Final Room","Navel Rock Entrance",
-  "Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4",
-  "Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5",
-  "Navel Rock Entrance","Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4","Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5",
+  "Artisan Cave B1F","Artisan Cave 1F","Mt. Pyre 1F","Mt. Pyre 2F",
 ]);
 
 const getMethodDisplay = (method, routeName) => {
@@ -500,10 +492,10 @@ function SpritePopup({ enc, adjRate, onCatch, onClose }) {
         </div>
         <div className="popup-actions">
           <button className="popup-btn catch-btn" onClick={()=>{onCatch(enc.pokemon);onClose();}}>
-            Catch & Add to Box
+            🎯 Catch & Add to Box
           </button>
           <a className="popup-btn dex-btn" href={getNulldexUrl(enc.pokemon)} target="_blank" rel="noreferrer">
-            View in Nulldex
+            📖 View in Nulldex
           </a>
         </div>
       </div>
@@ -531,6 +523,27 @@ const SpriteCard = memo(function SpriteCard({ enc, adjRate, duped, onCatch }) {
     </>
   );
 });
+
+const NOTE_LABELS = {
+  "Safari Zone South":     { grass: "Test" },
+  "Safari Zone North":     { grass: "Test", rock_smash: "Test" },
+  "Safari Zone Southwest": { grass: "Test", fishing: "Test", surfing: "Test" },
+  "Safari Zone Northwest": { grass: "Test", fishing: "Test", surfing: "Test" },
+  "Safari Zone Southeast": { grass: "Test", fishing: "Test", surfing: "Test", rock_smash: "Test" },
+  "Safari Zone Northeast": { grass: "Test" },
+  "Navel Rock Entrance":   { grass: "Test" },
+  "Navel Rock B1F":        { grass: "Test" },
+  "Navel Rock Fork":       { grass: "Test" },
+  "Navel Rock Up 1":       { grass: "Test" },
+  "Navel Rock Up 2":       { grass: "Test" },
+  "Navel Rock Up 3":       { grass: "Test" },
+  "Navel Rock Up 4":       { grass: "Test" },
+  "Navel Rock Down 1":     { grass: "Test" },
+  "Navel Rock Down 2":     { grass: "Test" },
+  "Navel Rock Down 3":     { grass: "Test" },
+  "Navel Rock Down 4":     { grass: "Test" },
+  "Navel Rock Down 5":     { grass: "Test" },
+};
 
 const RouteCard = memo(function RouteCard({ route, box, onCatch }) {
   const [expanded, setExpanded] = useState(false);
@@ -618,6 +631,20 @@ const RouteCard = memo(function RouteCard({ route, box, onCatch }) {
               <div className="method-header" style={{background:mColor}}>
                 <span>{mIcon}</span> <span>{mLabel}</span>
               </div>
+              {NOTE_LABELS[route.name]?.[method] && (
+                <div style={{
+                  background: 'rgba(233,69,96,0.15)',
+                  border: '1px solid var(--red)',
+                  borderRadius: 4,
+                  padding: '3px 10px',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  color: 'var(--red)',
+                  whiteSpace: 'nowrap',
+                }}>
+                  {NOTE_LABELS[route.name][method]}
+                </div>
+              )}
             </div>
             <div className="sprite-grid">
               {adjusted.map((enc,i)=>(
@@ -686,15 +713,15 @@ function NuzlockeTracker({ box, setBox }) {
 
   return (
     <div className="tracker">
-      <div className="tracker-header"><h2>Nuzlocke Box</h2></div>
+      <div className="tracker-header"><h2>📦 Nuzlocke Box</h2></div>
       <div className="tracker-add">
         <input className="tracker-input" placeholder="Pokémon name..." value={newName}
           onChange={e=>setNewName(e.target.value)} onKeyDown={e=>e.key==='Enter'&&addPokemon()}/>
         <button className="tracker-btn add-btn" onClick={()=>addPokemon()}>+ Add</button>
       </div>
       <div className="import-row">
-        <button className="tracker-btn import-btn" onClick={()=>setShowImport(!showImport)}>Paste</button>
-        <button className="tracker-btn import-btn" onClick={()=>fileRef.current.click()}>File</button>
+        <button className="tracker-btn import-btn" onClick={()=>setShowImport(!showImport)}>📋 Paste</button>
+        <button className="tracker-btn import-btn" onClick={()=>fileRef.current.click()}>📁 File</button>
         <input ref={fileRef} type="file" accept=".txt" style={{display:'none'}} onChange={handleFile}/>
         {box.length>0 && <button className="tracker-btn clear-btn" onClick={clearBox}>🚛 Clear</button>}
       </div>
@@ -755,7 +782,7 @@ const NAVEL_LAND = {
   "Navel Rock B1F":      [{r:"10%",p:"Salazzle"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Ambipom"},{r:"10%",p:"Hawlucha"},{r:"10%",p:"Primarina"},{r:"10%",p:"Swalot"},{r:"10%",p:"Samurott"},{r:"10%",p:"Samurott-Hisui"},{r:"10%",p:"Grafaiai"},{r:"5%",p:"Grafaiai"},{r:"4%",p:"Whimsicott"},{r:"1%",p:"Liepard"}],
   "Navel Rock Fork":     [{r:"10%",p:"Wyrdeer"},{r:"10%",p:"Exeggutor-Alola"},{r:"10%",p:"Carbink"},{r:"10%",p:"Cofagrigus"},{r:"10%",p:"Klefki"},{r:"10%",p:"Reuniclus"},{r:"10%",p:"Hatterene"},{r:"10%",p:"Orbeetle"},{r:"10%",p:"Spiritomb"},{r:"5%",p:"Spiritomb"},{r:"4%",p:"Spiritomb"},{r:"1%",p:"Spiritomb"}],
   "Navel Rock Up 1":     [{r:"10%",p:"Excadrill"},{r:"10%",p:"Toedscruel"},{r:"10%",p:"Avalugg"},{r:"10%",p:"Avalugg-Hisui"},{r:"10%",p:"Torkoal"},{r:"10%",p:"Coalossal"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Gliscor"},{r:"10%",p:"Corviknight"},{r:"5%",p:"Altaria"},{r:"4%",p:"Altaria"},{r:"1%",p:"Altaria"}],
-  "Navel Rock Up 2":     [{r:"10%",p:"Golem"},{r:"10%",p:"Golem-Alola"},{r:"10%",p:"Magnezone"},{r:"10%",p:"Steelix"},{r:"10%",p:"Forretress"},{r:"10%",p:"Donphan"},{r:"10%",p:"Bastiodon"},{r:"10%",p:"Duraludon"},{r:"10%",p:"Crustle"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
+  "Navel Rock Up 2":     [{r:"10%",p:"Golem"},{r:"10%",p:"Golem-Alola"},{r:"10%",p:"Magnezone"},{r:"10%",p:"Steelix"},{r:"10%",p:"Forretress"},{r:"10%",p:"Donphan"},{r:"10%",p:"Bastiodon"},{r:"10%",p:"Probopass"},{r:"10%",p:"Crustle"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
   "Navel Rock Up 3":     [{r:"10%",p:"Lycanroc-Midnight"},{r:"10%",p:"Bibarel"},{r:"10%",p:"Bombirdier"},{r:"10%",p:"Carbink"},{r:"10%",p:"Shuckle"},{r:"10%",p:"Minior"},{r:"10%",p:"Druddigon"},{r:"10%",p:"Armaldo"},{r:"10%",p:"Copperajah"},{r:"5%",p:"Meowstic"},{r:"4%",p:"Meowstic-F"},{r:"1%",p:"Meowstic-F"}],
   "Navel Rock Up 4":     [{r:"10%",p:"Cradily"},{r:"10%",p:"Porygon2"},{r:"10%",p:"Alcremie"},{r:"10%",p:"Gliscor"},{r:"10%",p:"Hydrapple"},{r:"10%",p:"Garganacl"},{r:"10%",p:"Togekiss"},{r:"10%",p:"Altaria"},{r:"10%",p:"Sableye"},{r:"5%",p:"Avalugg"},{r:"4%",p:"Avalugg-Hisui"},{r:"1%",p:"Avalugg-Hisui"}],
   "Navel Rock Down 1":   [{r:"10%",p:"Audino"},{r:"10%",p:"Yanmega"},{r:"10%",p:"Klawf"},{r:"10%",p:"Espathra"},{r:"10%",p:"Klefki"},{r:"10%",p:"Stonjourner"},{r:"10%",p:"Obstagoon"},{r:"10%",p:"Hitmontop"},{r:"10%",p:"Sableye"},{r:"5%",p:"Hitmontop"},{r:"4%",p:"Hitmontop"},{r:"1%",p:"Hitmontop"}],
@@ -776,7 +803,7 @@ const OTHER_LOCATIONS = {
   "Navel Rock B1F":        { grass: [{pokemon:"Salazzle",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Ambipom",level:40,rate:10},{pokemon:"Banette",level:40,rate:10},{pokemon:"Primarina",level:40,rate:10},{pokemon:"Hawlucha",level:40,rate:10},{pokemon:"Swalot",level:40,rate:10},{pokemon:"Samurott",level:40,rate:10},{pokemon:"Samurott-Hisui",level:40,rate:10},{pokemon:"Grafaiai",level:40,rate:5},{pokemon:"Whimsicott",level:40,rate:4},{pokemon:"Liepard",level:40,rate:1}] },
   "Navel Rock Fork":       { grass: [{pokemon:"Wyrdeer",level:40,rate:10},{pokemon:"Exeggutor-Alola",level:40,rate:10},{pokemon:"Carbink",level:40,rate:10},{pokemon:"Cofagrigus",level:40,rate:10},{pokemon:"Klefki",level:40,rate:10},{pokemon:"Reuniclus",level:40,rate:10},{pokemon:"Audino",level:40,rate:10},{pokemon:"Orbeetle",level:40,rate:10},{pokemon:"Hatterene",level:40,rate:10},{pokemon:"Spiritomb",level:40,rate:5},{pokemon:"Spiritomb",level:40,rate:4},{pokemon:"Spiritomb",level:40,rate:1}] },
   "Navel Rock Up 1":       { grass: [{pokemon:"Excadrill",level:40,rate:10},{pokemon:"Toedscruel",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:10},{pokemon:"Avalugg-Hisui",level:40,rate:10},{pokemon:"Torkoal",level:40,rate:10},{pokemon:"Coalossal",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Gliscor",level:40,rate:10},{pokemon:"Corviknight",level:40,rate:10},{pokemon:"Altaria",level:40,rate:5},{pokemon:"Altaria",level:40,rate:4},{pokemon:"Altaria",level:40,rate:1}] },
-  "Navel Rock Up 2":       { grass: [{pokemon:"Golem",level:40,rate:10},{pokemon:"Golem-Alola",level:40,rate:10},{pokemon:"Magnezone",level:40,rate:10},{pokemon:"Steelix",level:40,rate:10},{pokemon:"Forretress",level:40,rate:10},{pokemon:"Donphan",level:40,rate:10},{pokemon:"Bastiodon",level:40,rate:10},{pokemon:"Duraludon",level:40,rate:10},{pokemon:"Crustle",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
+  "Navel Rock Up 2":       { grass: [{pokemon:"Golem",level:40,rate:10},{pokemon:"Golem-Alola",level:40,rate:10},{pokemon:"Magnezone",level:40,rate:10},{pokemon:"Steelix",level:40,rate:10},{pokemon:"Forretress",level:40,rate:10},{pokemon:"Donphan",level:40,rate:10},{pokemon:"Bastiodon",level:40,rate:10},{pokemon:"Probopass",level:40,rate:10},{pokemon:"Crustle",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
   "Navel Rock Up 3":       { grass: [{pokemon:"Lycanroc-Midnight",level:40,rate:10},{pokemon:"Bibarel",level:40,rate:10},{pokemon:"Bombirdier",level:40,rate:10},{pokemon:"Carbink",level:40,rate:10},{pokemon:"Shuckle",level:40,rate:10},{pokemon:"Minior",level:40,rate:10},{pokemon:"Druddigon",level:40,rate:10},{pokemon:"Armaldo",level:40,rate:10},{pokemon:"Copperajah",level:40,rate:10},{pokemon:"Meowstic",level:40,rate:5},{pokemon:"Meowstic-F",level:40,rate:4},{pokemon:"Meowstic-F",level:40,rate:1}] },
   "Navel Rock Up 4":       { grass: [{pokemon:"Cradily",level:40,rate:10},{pokemon:"Porygon2",level:40,rate:10},{pokemon:"Alcremie",level:40,rate:10},{pokemon:"Gliscor",level:40,rate:10},{pokemon:"Hydrapple",level:40,rate:10},{pokemon:"Garganacl",level:40,rate:10},{pokemon:"Togekiss",level:40,rate:10},{pokemon:"Altaria",level:40,rate:10},{pokemon:"Sableye",level:40,rate:10},{pokemon:"Avalugg",level:40,rate:5},{pokemon:"Avalugg-Hisui",level:40,rate:4},{pokemon:"Avalugg-Hisui",level:40,rate:1}] },
   "Navel Rock Down 1":     { grass: [{pokemon:"Audino",level:40,rate:10},{pokemon:"Yanmega",level:40,rate:10},{pokemon:"Klawf",level:40,rate:10},{pokemon:"Espathra",level:40,rate:10},{pokemon:"Klefki",level:40,rate:10},{pokemon:"Dachsbun",level:40,rate:10},{pokemon:"Stonjourner",level:40,rate:10},{pokemon:"Obstagoon",level:40,rate:10},{pokemon:"Sableye",level:40,rate:10},{pokemon:"Hitmontop",level:40,rate:5},{pokemon:"Hitmontop",level:40,rate:4},{pokemon:"Hitmontop",level:40,rate:1}] },
@@ -789,36 +816,7 @@ const OTHER_LOCATIONS = {
 const SAFARI_LOCATIONS = ["Safari Zone South","Safari Zone North","Safari Zone Southwest","Safari Zone Northwest","Safari Zone Southeast","Safari Zone Northeast"];
 const NAVEL_LOCATIONS  = ["Navel Rock Entrance","Navel Rock B1F","Navel Rock Fork","Navel Rock Up 1","Navel Rock Up 2","Navel Rock Up 3","Navel Rock Up 4","Navel Rock Down 1","Navel Rock Down 2","Navel Rock Down 3","Navel Rock Down 4","Navel Rock Down 5"];
 
-const NOTE_LABELS = {
-  "Safari Zone North":     { grass: "Opens up after defeating Maxie in Magma Hideout.", rock_smash: "Opens up after defeating Maxie in Magma Hideout." },
-  "Safari Zone Southwest": { grass: "Opens up after getting the Mind Badge.", fishing: "Opens up after getting the Mind Badge.", surfing: "Opens up after getting the Mind Badge." },
-  "Safari Zone Northwest": { grass: "Opens up after defeating Archie in Seafloor Cavern.", fishing: "Opens up after defeating Archie in Seafloor Cavern.", surfing: "Opens up after defeating Archie in Seafloor Cavern." },
-  "Safari Zone Southeast": { grass: "Opens up after getting the Adamantite Badge.", fishing: "Opens up after getting the Adamantite Badge.", surfing: "Opens up after getting the Adamantite Badge.", rock_smash: "Opens up after getting the Adamantite Badge." },
-  "Safari Zone Northeast": { grass: "Opens up after getting the Adamantite Badge." },
-  "Navel Rock Entrance":   { grass: "U-turn table" },
-  "Navel Rock B1F":        { grass: "Encore table" },
-  "Navel Rock Fork":       { grass: "Trick Room table" },
-  "Navel Rock Up 1":       { grass: "Hazard Removal table" },
-  "Navel Rock Up 2":       { grass: "Sturdy table" },
-  "Navel Rock Up 3":       { grass: "Stealth Rock table" },
-  "Navel Rock Up 4":       { grass: "Recovery table" },
-  "Navel Rock Down 1":     { grass: "Protect table" },
-  "Navel Rock Down 2":     { grass: "Redirection table" },
-  "Navel Rock Down 3":     { grass: "Sucker Punch table" },
-  "Navel Rock Down 4":     { grass: "Fake Out table" },
-  "Navel Rock Down 5":     { grass: "Crit Immunity table" },
-  "Altering Grove":        { fishing: "Azumarill can use Perish Song." },
-  "Lilycove City":         { fishing: "both Primarina and Azumarill can use Perish Song." },
-  "Route 134":             { fishing: "Azumarill can use Perish Song." },
-  "Shoal Cave (Inner Room)": { surfing: "Politoed can use Perish Song." },
-  "Route 126":             { fishing: "Politoed can use Perish Song." },
-  "Route 122":             { surfing: "Mismagius can use Perish Song." },
-  "Fortree City":            { grass: "Altaria can use Perish Song." },
-  "Lilycove city":           { surfing: "Altaria can use Perish Song." },
-  "Route 131":             { surfing: "Primarina can use Perish Song." },
-  "Meteor Falls B1F Room 1":          { fishing: "Dewgong can use Perish Song." },
-  "Dewford Town":           { grass: "both Natu and Abra can use Teleport." },
-};
+// ─── Edit these notes to change the red text next to each encounter table ────
 
 function OtherLocationCard({ name, encounters, box, onCatch }) {
   const [expanded, setExpanded] = useState(false);
@@ -875,10 +873,9 @@ function OtherLocationCard({ name, encounters, box, onCatch }) {
         </button>
       )}
     </div>
-
   );
 }
- 
+
 function OtherSection({ box, onCatch }) {
   const [tab, setTab] = useState('safari');
   const locations = tab === 'safari' ? SAFARI_LOCATIONS : NAVEL_LOCATIONS;
@@ -901,7 +898,6 @@ function OtherSection({ box, onCatch }) {
     </div>
   );
 }
- 
 
 function SpecialSection() {
   return (
@@ -1002,8 +998,8 @@ function App() {
 
   const allNavItems=[
     ...GYM_SECTIONS.map(g=>({key:g.gym,label:g.gym,badge:g.badge,emoji:g.emoji})),
-    {key:'Other',label:'Other',badge:'Safari Zone + Navel Rock',emoji:'🎁',tooltip:'Contains Safari Zone & Navel Rock encounters'},
-    {key:'Special',label:'Special',badge:'Trades + Game Corner',emoji:'✨'},
+    {key:'Other',label:'Other',badge:'Gifts & Trades',emoji:'🎁',tooltip:'Contains Safari Zone & Navel Rock encounters'},
+    {key:'Special',label:'Special',badge:'Special Enc.',emoji:'✨'},
   ];
 
   return (
@@ -1014,17 +1010,17 @@ function App() {
             Pokémon Null
             <img src={TYPE_NULL_SPRITE} alt="Type: Null" className="header-type-null"/>
           </h1>
-          <span className="header-sub">Encounter Router</span>
+          <span className="header-sub">Encounter Router · 116 Routes</span>
         </div>
         <div style={{display:'flex',alignItems:'center',gap:16}}>
+          <input className="search-bar" placeholder="🔍 Search routes..." value={search} onChange={e=>setSearch(e.target.value)}/>
           <a href="https://www.twitch.tv/xyzal_0" target="_blank" rel="noreferrer"
             style={{display:'flex',alignItems:'center',gap:6,textDecoration:'none',whiteSpace:'nowrap'}}>
-            <span style={{fontSize:'0.8rem',fontWeight:700,color:'#9147ff'}}>Created by: xyzal </span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#9147ff" xmlns="http://www.w3.org/2000/svg">
               <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
             </svg>
+            <span style={{fontSize:'0.8rem',fontWeight:700,color:'#9147ff'}}>Created by: xyzal</span>
           </a>
-          <input className="search-bar" placeholder="Search routes..." value={search} onChange={e=>setSearch(e.target.value)}/>
         </div>
       </header>
 
